@@ -73,7 +73,8 @@ pipeline {
                         helm upgrade --install app ./charts \
                         --namespace dev \
                         --set movie.image.tag=${IMAGE_TAG} \
-                        --set cast.image.tag=${IMAGE_TAG}
+                        --set cast.image.tag=${IMAGE_TAG} \
+                        --set service.nodePort=30007
                     """
                 }
             }
@@ -86,7 +87,8 @@ pipeline {
                         helm upgrade --install app ./charts \
                         --namespace qa \
                         --set movie.image.tag=${IMAGE_TAG} \
-                        --set cast.image.tag=${IMAGE_TAG}
+                        --set cast.image.tag=${IMAGE_TAG}\
+                        --set service.nodePort=30008
                     """
                 }
             }
@@ -99,7 +101,8 @@ pipeline {
                         helm upgrade --install app ./charts \
                         --namespace staging \
                         --set movie.image.tag=${IMAGE_TAG} \
-                        --set cast.image.tag=${IMAGE_TAG}
+                        --set cast.image.tag=${IMAGE_TAG}\
+                        --set service.nodePort=30009
                     """
                 }
             }
@@ -116,7 +119,8 @@ pipeline {
                         helm upgrade --install app ./charts \
                         --namespace prod \
                         --set movie.image.tag=${IMAGE_TAG} \
-                        --set cast.image.tag=${IMAGE_TAG}
+                        --set cast.image.tag=${IMAGE_TAG}\
+                        --set service.nodePort=30010
                     """
                 }
             }
