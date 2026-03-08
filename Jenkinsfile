@@ -6,6 +6,7 @@ pipeline {
         IMAGE_MOVIE="movie-service"
         IMAGE_CASE="cast-service"
         IMAGE_TAG="${BUILD_NUMBER}"
+        KUBECONFIG = "/var/lib/jenkins/.kube/config"
     }
 
     stages {
