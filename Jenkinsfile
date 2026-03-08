@@ -109,9 +109,6 @@ pipeline {
         }
 
         stage("Deploy Prod") {
-            when {
-                branch "master"
-            }
 
             steps {
                 script {
