@@ -44,6 +44,28 @@ pipeline {
             }
         }
 
+        stage("Cleanup old services") {
+            steps {
+                sh """
+                kubectl delete svc movies-fastapiapp -n dev || true
+                kubectl delete svc movies-fastapiapp -n qa || true
+                kubectl delete svc movies-fastapiapp -n staging || true
+                kubectl delete svc movies-fastapiapp -n prod || true
+                """
+            }
+        }
+
+        stage("Create namespaces") {
+                steps {
+                    sh """
+                        kubectl create namespace dev || true
+                        kubectl create namespace qa || true
+                        kubectl create namespace staging || true
+                        kubectl create namespace prod || true
+                    """
+                }
+            }
+
         stage("Deploy Dev") {
             steps {
                 script {
